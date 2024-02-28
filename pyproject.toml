@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "big-data"
+version = "0.1.0"
+description = "Dependencies for the Big Data Project at UvA, class 2024."
+authors = ["mlad-en <downloadsquish@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+pyspark = "^3.5.1"
+pydantic = "^2.6.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
