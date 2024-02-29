@@ -8,7 +8,7 @@
 ## Project specifics:
 
 The current project is set up to run against `python3 v. 3.12`.
-The setup created with poetry and all dependencies are listed in the `pyproject.toml` file.
+The setup created with `poetry` and all dependencies are listed in the `pyproject.toml` file.
 
 Since PySpark relies on Java, we need to install it. Go to https://www.java.com/en/ for the package and install it.
 
@@ -20,10 +20,10 @@ You can access them by the given attribute as seen in the code snippet below.
 
 ```python
 
-from readers.readers import Data
+from readers.readers import SparkData
 
 
-data = Data()
+data = SparkData()
 
 data.train_file_1.show()
 data.train_file_2.show()
