@@ -10,31 +10,26 @@
 The current project is set up to run against `python3 v. 3.12`.
 The setup created with `poetry` and all dependencies are listed in the `pyproject.toml` file.
 
-Since PySpark relies on Java, we need to install it. Go to https://www.java.com/en/ for the package and install it.
+## Working with the Makefile
+After ensuring your terminal is running python 3.12 and you have all your poetry dependencies installed, you can run:
 
-## Working with the RDDs
+```bash
+make ingest-data
+```
+This command will begin the ingestion of all data.
+
+## Convenience functions
 
 The Data class in the readers.readers package will read all files for you.
-
 You can access them by the given attribute as seen in the code snippet below.
 
 ```python
 
-from readers.readers import SparkData
+from readers.readers import DuckData
+import duckdb
 
+data = DuckData()
+training_data = data.all_training_data
 
-data = SparkData()
-
-data.train_file_1.show()
-data.train_file_2.show()
-data.train_file_3.show()
-data.train_file_4.show()
-data.train_file_5.show()
-data.train_file_6.show()
-data.train_file_7.show()
-data.train_file_8.show()
-data.test_hidden_file.show()
-data.directing.show()
-data.writing.show()
-
+duckdb.query("FROM training_data")
 ```
