@@ -81,38 +81,51 @@ class DuckData:
     def __init__(self):
         self.conn = duckdb.connect()
 
-        self.train_file_1 = self.conn.read_csv(
-            FileNames.train_file_1.absolute_file_path
+        self.train_file_1 = self.conn.read_parquet(
+            FileNames.train_file_1.as_parquet().absolute_file_path
         )
-        self.train_file_2 = self.conn.read_csv(
-            FileNames.train_file_2.absolute_file_path
+        self.train_file_2 = self.conn.read_parquet(
+            FileNames.train_file_2.as_parquet().absolute_file_path
         )
-        self.train_file_3 = self.conn.read_csv(
-            FileNames.train_file_3.absolute_file_path
+        self.train_file_3 = self.conn.read_parquet(
+            FileNames.train_file_3.as_parquet().absolute_file_path
         )
-        self.train_file_4 = self.conn.read_csv(
-            FileNames.train_file_4.absolute_file_path
+        self.train_file_4 = self.conn.read_parquet(
+            FileNames.train_file_4.as_parquet().absolute_file_path
         )
-        self.train_file_5 = self.conn.read_csv(
-            FileNames.train_file_5.absolute_file_path
+        self.train_file_5 = self.conn.read_parquet(
+            FileNames.train_file_5.as_parquet().absolute_file_path
         )
-        self.train_file_6 = self.conn.read_csv(
-            FileNames.train_file_6.absolute_file_path
+        self.train_file_6 = self.conn.read_parquet(
+            FileNames.train_file_6.as_parquet().absolute_file_path
         )
-        self.train_file_7 = self.conn.read_csv(
-            FileNames.train_file_7.absolute_file_path
+        self.train_file_7 = self.conn.read_parquet(
+            FileNames.train_file_7.as_parquet().absolute_file_path
         )
-        self.train_file_8 = self.conn.read_csv(
-            FileNames.train_file_8.absolute_file_path
-        )
-
-        self.testing_file = self.conn.read_csv(
-            FileNames.test_hidden_file.absolute_file_path
+        self.train_file_8 = self.conn.read_parquet(
+            FileNames.train_file_8.as_parquet().absolute_file_path
         )
 
-        self.train_file_8 = self.conn.read_json(
-            FileNames.directing_file.absolute_file_path
+        self.testing_file = self.conn.read_parquet(
+            FileNames.test_hidden_file.as_parquet().absolute_file_path
         )
-        self.train_file_8 = self.conn.read_json(
-            FileNames.writing_file.absolute_file_path
+
+        self.directing = self.conn.read_parquet(
+            FileNames.directing_file.as_parquet().absolute_file_path
+        )
+        self.writing = self.conn.read_parquet(
+            FileNames.writing_file.as_parquet().absolute_file_path
+        )
+
+        self.all_training_data = (
+            self.train_file_1
+            .union(self.train_file_2)
+            .union(self.train_file_3)
+            .union(self.train_file_4)
+            .union(self.train_file_5)
+            .union(self.train_file_6)
+            .union(self.train_file_7)
+            .union(self.train_file_8)
+            .join(self.writing, condition="tconst == movie", how="left")
+            .join(self.directing, condition="movie", how="left")
         )
