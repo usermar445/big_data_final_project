@@ -58,6 +58,7 @@ class FileNames:
     train_file_6 = File("train-6").as_csv()
     train_file_7 = File("train-7").as_csv()
     train_file_8 = File("train-8").as_csv()
+    validation_hidden_file = File("validation_hidden").as_csv()
     test_hidden_file = File("test_hidden").as_csv()
     directing_file = File("directing").as_json()
     writing_file = File("writing").as_json()
@@ -108,6 +109,10 @@ class DuckData:
 
         self.testing_file = self.conn.read_parquet(
             FileNames.test_hidden_file.as_parquet().absolute_file_path
+        )
+
+        self.validation_hidden_file = self.conn.read_parquet(
+            FileNames.validation_hidden_file.as_parquet().absolute_file_path
         )
 
         self.directing = self.conn.read_parquet(

@@ -92,6 +92,13 @@ def main(command_line_args: CommandLineArgs):
         validator=TestValidation,
     )
 
+    pull_csv_data_to_local(
+        source=command_line_args.source_data,
+        file=FileNames.validation_hidden_file,
+        logger=logger,
+        validator=TestValidation,
+    )
+
     for file in FileNames.csv_data_sets():
         pull_csv_data_to_local(
             source=command_line_args.source_data,
