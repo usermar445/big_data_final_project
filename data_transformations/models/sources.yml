@@ -1,0 +1,28 @@
+version: 2
+
+sources:
+  - name: directing
+    meta:
+      external_location: "{{ env_var('DIRECTING_FILE_LOC') }}"
+    tables:
+      - name: directing_raw
+  - name: writing
+    meta:
+      external_location: "{{ env_var('WRITING_FILE_LOC') }}"
+    tables:
+      - name: writing_raw
+  - name: training
+    meta:
+      external_location: "{{ env_var('TRAINING_FILES_LOC') }}"
+    tables:
+      - name: training_data_raw
+  - name: validation
+    meta:
+      external_location: "{{ env_var('VALIDATION_FILE_LOC') }}"
+    tables:
+      - name: validation_data_raw
+  - name: testing
+    meta:
+      external_location: "{{ env_var('TESTING_FILE_LOC') }}"
+    tables:
+      - name: testing_data_raw

@@ -1,0 +1,63 @@
+models:
+
+  - name: training_data_raw
+    columns:
+      - name: tconst
+        tests:
+          - not_null
+          - unique
+          - id_begins_with_tt
+      - name: primaryTitle
+        tests:
+          - unique
+          - not_null
+      - name: startYear
+        tests:
+          - not_null
+          - future_date_not_permitted
+
+  - name: directing_raw
+    columns:
+      - name: movie
+        tests:
+          - not_null
+          - id_begins_with_tt
+
+  - name: writing_raw
+    columns:
+      - name: movie
+        tests:
+          - not_null
+          - id_begins_with_tt
+
+  - name: validation_data_raw
+    columns:
+      - name: tconst
+        tests:
+          - not_null
+          - unique
+          - id_begins_with_tt
+
+  - name: testing_data_raw
+    columns:
+      - name: tconst
+        tests:
+          - not_null
+          - unique
+          - id_begins_with_tt
+
+  - name: combined_training_data
+    columns:
+      - name: tconst
+        tests:
+          - not_null
+          - unique
+          - id_begins_with_tt
+      - name: primaryTitle
+        tests:
+          - unique
+          - not_null
+      - name: startYear
+        tests:
+          - not_null
+          - future_date_not_permitted
