@@ -2,7 +2,7 @@ include .env
 export
 
 TRANSFORMS_FOLDER=data_transformations
-
+DAGSTER_DBT_PARSE_PROJECT_ON_LOAD=1
 
 format:
 	@eval "$$(pyenv init -)" && \
@@ -24,3 +24,7 @@ dbt-run:
 dbt-test:
 	cd $$TRANSFORMS_FOLDER && \
 	poetry run dbt test
+
+
+dagster-run:
+	poetry run dagster $$ENVIRONMENT
