@@ -31,4 +31,4 @@ dagster-run:
 
 
 docker-dagster:
-	poetry run dagster $ENVIRONMENT --dagit-host=0.0.0.0 --dagit-port=8080
+	poetry run dagster $$ENVIRONMENT --dagit-host=0.0.0.0 --dagit-port=8080

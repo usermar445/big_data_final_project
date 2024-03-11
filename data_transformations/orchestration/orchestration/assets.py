@@ -67,9 +67,10 @@ def testing_data():
 
 
 @asset(group_name="extract")
-def directing_data():
+def directing_data(context: AssetExecutionContext):
     env_data = get_env_data()
     file = f"{env_data.source_data}/{env_data.directing_file_name}.json"
+    context.log.info(file)
     df = pd.read_json(file)
     df.to_parquet(f"data/{env_data.test_file_name}.parquet")
     return df

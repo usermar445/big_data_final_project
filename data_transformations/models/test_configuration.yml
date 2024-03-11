@@ -15,6 +15,12 @@ models:
         tests:
           - not_null
           - future_date_not_permitted
+      - name: endYear
+        tests:
+          - future_date_not_permitted
+      - name: numVotes
+        tests:
+          - negative_not_permitted
 
   - name: directing_raw
     columns:
@@ -37,6 +43,20 @@ models:
           - not_null
           - unique
           - id_begins_with_tt
+      - name: primaryTitle
+        tests:
+          - unique
+          - not_null
+      - name: startYear
+        tests:
+          - not_null
+          - future_date_not_permitted
+      - name: endYear
+        tests:
+          - future_date_not_permitted
+      - name: numVotes
+        tests:
+          - negative_not_permitted
 
   - name: testing_data_raw
     columns:
@@ -45,6 +65,20 @@ models:
           - not_null
           - unique
           - id_begins_with_tt
+      - name: primaryTitle
+        tests:
+          - unique
+          - not_null
+      - name: startYear
+        tests:
+          - not_null
+          - future_date_not_permitted
+      - name: endYear
+        tests:
+          - future_date_not_permitted
+      - name: numVotes
+        tests:
+          - negative_not_permitted
 
   - name: combined_training_data
     columns:

@@ -15,4 +15,4 @@ EXPOSE 8080
 
 RUN echo $DIRECTING_FILE_LOC
 
-CMD ["poetry", "run", "dagster", "dev", "--dagit-port=8080", "--dagit-host=0.0.0.0"]
+CMD ["make", "docker-dagster"]
