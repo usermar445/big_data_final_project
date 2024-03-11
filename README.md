@@ -33,3 +33,8 @@ training_data = data.all_training_data
 
 duckdb.query("FROM training_data")
 ```
+
+
+## PRoject overview:
+
+![project_plan.svg](project_plan.svg)
