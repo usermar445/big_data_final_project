@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  dagster:
+    environment:
+      - DATA_SOURCE="https://raw.githubusercontent.com/hazourahh/big-data-course-2024-projects/master/imdb"
+      - TRAINING_FILE_NUMBERS=8
+      - LOGGING_LEVEL="DEBUG"
+      - ENVIRONMENT=dev
+      - DIRECTING_FILE_LOC=../data/directing.parquet
+      - WRITING_FILE_LOC=../data/writing.parquet
+      - TRAINING_FILES_LOC=../data/train-*.parquet
+      - VALIDATION_FILE_LOC=../data/validation_hidden.parquet
+      - TESTING_FILE_LOC=../data/test_hidden.parquet
+    build: .
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/big-data
+#    command: ["poetry", "run", "dagster", "dev", "--dagit-port=8080", "--dagit-host=0.0.0.0"]
+    command: ["make", "docker-dagster"]

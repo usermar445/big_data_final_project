@@ -28,3 +28,7 @@ dbt-test:
 
 dagster-run:
 	poetry run dagster $$ENVIRONMENT
+
+
+docker-dagster:
+	poetry run dagster $ENVIRONMENT --dagit-host=0.0.0.0 --dagit-port=8080
