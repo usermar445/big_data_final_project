@@ -3,7 +3,8 @@ from typing import Mapping, Any, Optional
 import pandas as pd
 from dagster import AssetExecutionContext, asset, StaticPartitionsDefinition, asset_check, AssetCheckResult, op, \
     AssetChecksDefinition
-from dagster_dbt import DbtCliResource, dbt_assets, DagsterDbtTranslator, get_asset_key_for_source
+from dagster_dbt import DbtCliResource, dbt_assets, DagsterDbtTranslator, get_asset_key_for_source, \
+    DagsterDbtTranslatorSettings
 from dotenv import load_dotenv
 
 import os
@@ -22,7 +23,12 @@ class CustomDagsterDbtTranslator(DagsterDbtTranslator):
         return "transform"
 
 
-@dbt_assets(manifest=dbt_manifest_path, dagster_dbt_translator=CustomDagsterDbtTranslator())
+@dbt_assets(
+    manifest=dbt_manifest_path,
+    dagster_dbt_translator=CustomDagsterDbtTranslator(
+        settings=DagsterDbtTranslatorSettings(enable_asset_checks=True)
+    )
+)
 def data_transformations_dbt_assets(context: AssetExecutionContext, dbt: DbtCliResource):
     yield from dbt.cli(["build"], context=context).stream()
 
