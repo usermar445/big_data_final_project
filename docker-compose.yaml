@@ -17,5 +17,4 @@ services:
       - "8080:8080"
     volumes:
       - .:/big-data
-#    command: ["poetry", "run", "dagster", "dev", "--dagit-port=8080", "--dagit-host=0.0.0.0"]
     command: ["make", "docker-dagster"]

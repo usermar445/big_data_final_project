@@ -95,3 +95,14 @@ models:
         tests:
           - not_null
           - future_date_not_permitted
+  - name: movie_year
+    columns:
+      - name: year
+        tests:
+          - not_null
+          - negative_not_permitted
+      - name: tconst
+        tests:
+          - not_null
+          - unique
+          - id_begins_with_tt

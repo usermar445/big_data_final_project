@@ -28,9 +28,6 @@ SELECT
             WHEN startYear LIKE '%N%' THEN TRY_CAST(endYear AS INTEGER)
             ELSE TRY_CAST(startYear AS INTEGER)
         END AS Year,
-        TRY_CAST(runtimeMinutes  AS INTEGER) as runtimeMinutes,
-        numVotes,
-
-        -- Convert True/False to 1/0
-        CAST(label AS INT) as label
-    FROM {{ ref('training_data_raw') }}
+        runtimeMinutes,
+        numVotes
+    FROM {{ ref('test_data_raw') }}

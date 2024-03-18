@@ -78,7 +78,7 @@ def directing_data(context: AssetExecutionContext):
     file = f"{env_data.source_data}/{env_data.directing_file_name}.json"
     context.log.info(file)
     df = pd.read_json(file)
-    df.to_parquet(f"data/{env_data.test_file_name}.parquet")
+    df.to_parquet(f"data/{env_data.directing_file_name}.parquet")
     return df
 
 
@@ -87,5 +87,5 @@ def writing_data():
     env_data = get_env_data()
     file = f"{env_data.source_data}/{env_data.writing_file_name}.json"
     df = pd.read_json(file)
-    df.to_parquet(f"data/{env_data.test_file_name}.parquet")
+    df.to_parquet(f"data/{env_data.writing_file_name}.parquet")
     return df
