@@ -11,7 +11,9 @@ def headers_are_correct(check_blob: Mapping[str, str]) -> AssetChecksDefinition:
     def _check(context, data):
         actual_cols = set(data.columns)
         expected_cols = check_blob["headers"]
-        return AssetCheckResult(passed=len(actual_cols.intersection(expected_cols)) == len(expected_cols))
+        return AssetCheckResult(
+            passed=len(actual_cols.intersection(expected_cols)) == len(expected_cols)
+        )
 
     return _check
 
@@ -55,56 +57,56 @@ headers_correct_blobs = [
         "name": "headers_correct",
         "asset": "training_data",
         "headers": {
-            'tconst',
-            'primaryTitle',
-            'originalTitle',
-            'startYear',
-            'endYear',
-            'runtimeMinutes',
-            'numVotes',
-            'label',
-        }
+            "tconst",
+            "primaryTitle",
+            "originalTitle",
+            "startYear",
+            "endYear",
+            "runtimeMinutes",
+            "numVotes",
+            "label",
+        },
     },
     {
         "name": "headers_correct",
         "asset": "validation_data",
         "headers": {
-            'tconst',
-            'primaryTitle',
-            'originalTitle',
-            'startYear',
-            'endYear',
-            'runtimeMinutes',
-            'numVotes',
-        }
+            "tconst",
+            "primaryTitle",
+            "originalTitle",
+            "startYear",
+            "endYear",
+            "runtimeMinutes",
+            "numVotes",
+        },
     },
     {
         "name": "headers_correct",
         "asset": "testing_data",
         "headers": {
-            'tconst',
-            'primaryTitle',
-            'originalTitle',
-            'startYear',
-            'endYear',
-            'runtimeMinutes',
-            'numVotes',
-        }
+            "tconst",
+            "primaryTitle",
+            "originalTitle",
+            "startYear",
+            "endYear",
+            "runtimeMinutes",
+            "numVotes",
+        },
     },
     {
         "name": "headers_correct",
         "asset": "directing_data",
         "headers": {
-            'movie',
-            'director',
-        }
+            "movie",
+            "director",
+        },
     },
     {
         "name": "headers_correct",
         "asset": "writing_data",
         "headers": {
-            'movie',
-            'writer',
-        }
+            "movie",
+            "writer",
+        },
     },
 ]
