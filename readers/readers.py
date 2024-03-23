@@ -123,8 +123,7 @@ class DuckData:
         )
 
         self.all_training_data = (
-            self.train_file_1
-            .union(self.train_file_2)
+            self.train_file_1.union(self.train_file_2)
             .union(self.train_file_3)
             .union(self.train_file_4)
             .union(self.train_file_5)
