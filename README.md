@@ -1,4 +1,4 @@
-# Building a Robust, Scaleable, and Efficient Data Pipeline for IMDB Movie Success Predictions 
+# Designing Reusable and Scalable Data Pipelines for Movie Success Prediction
 #### Final project, *Big Data*, 2024, University of Amsterdam (UvA), Prof. Dr. Hazar Harmouch
 
 Authors: Linh Nguyen, Martin Arnold, Mladen Mladenov, Nicola Asquith, Stijn van der Klis
